@@ -8,7 +8,7 @@
 #elif OS_MAC
 #include <immintrin.h>
 #define _InterlockedExchangeAdd __sync_fetch_and_add
-#else
+#elif OS_WINDOWS //NOTE(AD): it gave an error, but if it is for windows, i'm using linux
 #include <intrin.h>
 #endif
 
