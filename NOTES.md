@@ -38,5 +38,8 @@ The list of key codes are in `custom/generated/4coder_event_codes.h`
 Now 4coder uses keyboard layout independent key codes, which means when a key code is "referenced" in a specific mode, it's referenced to that physical position of the key.
 It's an option wich can be activated in config.4coder by changing the value of `bind_by_physical_key` to true.
 
-
-
+## Using code to overwrite key bindings
+If what we want to do is overwrite some bindings in code, select a key map using the `SelectMap` function and passing the key map id we wish to use, and then bind a key combination using Bind and passing it the command we want to bind and the keys to use to call the command separated by commas. Do this after calling `setup_default_mapping`.  
+Basically [`4coder_default_map.cpp`](code/custom/4coder_default_map.cpp)
+Also, we need to remove the code that reads `bindings.4coder` file in `4coder_default_framework.cpp` in the `default_4coder_initialize` function, otherwise, it will overwrite the changes.
+To remove it, just `#if 0` 
