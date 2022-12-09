@@ -35,6 +35,16 @@ custom_layer_init(Application_Links *app){
     setup_default_mapping(&framework_mapping, global_map_id, file_map_id, code_map_id);
 #endif
 	setup_essential_mapping(&framework_mapping, global_map_id, file_map_id, code_map_id);
+
+    // NOTE(AD): CUSTOM MAPPING BEGIN
+    MappingScope();
+    SelectMapping(&framework_mapping);
+    SelectMap(global_map_id);
+    Bind(kill_buffer, KeyCode_K, KeyCode_Control); // assign Ctrl+K to kill buffer
+    Bind(change_active_panel, KeyCode_O, KeyCode_Control, KeyCode_Alt); /// assign Ctrl+Alt+o to switch buffer
+    // With this example, there will be two ways to kill buffer, the way it's 
+    // programmed in setup_default_mapping and this one, they both work
+    // CUSTOM MAPPING END
 }
 
 #endif //FCODER_DEFAULT_BINDINGS

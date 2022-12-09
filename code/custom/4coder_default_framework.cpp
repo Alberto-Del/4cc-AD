@@ -624,6 +624,7 @@ default_4coder_initialize(Application_Links *app, String_Const_u8_Array file_nam
     
     load_config_and_apply(app, &global_config_arena, override_font_size, override_hinting);
     // NOTE(AD): #if 0 here to line 648    
+    #if 0
     String_Const_u8 bindings_file_name = string_u8_litexpr("bindings.4coder");
     String_Const_u8 mapping = def_get_config_string(scratch, vars_save_string_lit("mapping"));
     
@@ -645,7 +646,7 @@ default_4coder_initialize(Application_Links *app, String_Const_u8_Array file_nam
     else{
         setup_built_in_mapping(app, mapping, &framework_mapping, global_map_id, file_map_id, code_map_id);
     }
-    
+    #endif 
     // open command line files
     String_Const_u8 hot_directory = push_hot_directory(app, scratch);
     for (i32 i = 0; i < file_names.count; i += 1){
